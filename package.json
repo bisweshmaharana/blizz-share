@@ -1,0 +1,43 @@
+{
+  "name": "blizz-share",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3002 -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/file-saver": "^2.0.7",
+    "cloudinary": "^2.6.0",
+    "crypto-js": "^4.1.1",
+    "file-saver": "^2.0.5",
+    "formidable": "^3.5.2",
+    "framer-motion": "^10.16.4",
+    "idb": "^8.0.2",
+    "jszip": "^3.10.1",
+    "mongodb": "^6.14.2",
+    "next": "^14.2.24",
+    "next-connect": "^1.0.0",
+    "postcss": "^8.4.31",
+    "qrcode.react": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-icons": "^4.11.0",
+    "react-qr-code": "^2.0.15",
+    "tailwindcss": "^3.3.3",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "@types/react": "^18.2.24",
+    "@types/react-dom": "^18.2.8",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^14.2.24",
+    "postcss-nested": "^7.0.2",
+    "typescript": "^5.2.2"
+  }
+}

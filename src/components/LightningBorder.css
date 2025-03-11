@@ -1,0 +1,52 @@
+@keyframes lightning-move {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.lightning-container {
+  position: relative;
+  border-radius: 8px;
+  background: #1f2937;
+}
+
+.lightning-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, 
+    rgba(0, 194, 255, 0.1), 
+    rgba(255, 255, 255, 0.8), 
+    rgba(0, 194, 255, 0.1)
+  );
+  background-size: 200% 100%;
+  animation: lightning-move 1.5s linear infinite;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.lightning-content {
+  background-color: rgba(31, 41, 55, 0.95);
+  border-radius: 7px;
+  position: relative;
+  z-index: 1;
+}
+
+.qr-lightning-content {
+  background-color: white;
+  border-radius: 7px;
+  position: relative;
+  z-index: 1;
+}
