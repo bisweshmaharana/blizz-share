@@ -2,7 +2,7 @@ services:
   - type: web
     name: blizz-share
     env: node
-    buildCommand: chmod +x ./build.sh && ./build.sh
+    buildCommand: npm install && npm install --save typescript@5.2.2 @types/react@18.2.24 @types/node@20.8.2 @types/react-dom@18.2.8 postcss-nested@7.0.2 && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
