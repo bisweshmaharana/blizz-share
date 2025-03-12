@@ -3,6 +3,9 @@ import cloudinary from '@/lib/cloudinary';
 import clientPromise from '@/lib/mongodb';
 import { generateOTP, generateId } from '@/lib/utils';
 
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
+
 export async function POST(req: NextRequest) {
   try {
     // Get form data with file
@@ -71,11 +74,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
   }
 }
-
-// Handle file size limit (100MB max for free Cloudinary)
-export const config = {
-  api: {
-    bodyParser: false,
-    sizeLimit: '100mb',
-  },
-};
