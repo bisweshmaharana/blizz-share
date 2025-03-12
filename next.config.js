@@ -8,10 +8,17 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'res.cloudinary.com'],
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    // Fix module resolution issues
     config.resolve.fallback = { fs: false, path: false };
+    
+    // Ensure proper module resolution for components
+    config.resolve.modules = ['node_modules', './src'];
+    
     return config;
   },
+  // Ensure proper transpilation
+  transpilePackages: ['react-qr-code', 'qrcode.react'],
 };
 
 module.exports = nextConfig;
