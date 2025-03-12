@@ -70,7 +70,7 @@ const FileUploader = () => {
   const [currentFileId, setCurrentFileId] = useState('');
 
   // Ensure consistent file ID generation
-  const generateFileId = () => {
+  const generateFileId = (): string => {
     // Generate a short, unique 6-character ID
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -1007,7 +1007,7 @@ const FileUploader = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="bg-gray-900 rounded-lg shadow-xl overflow-hidden"
+                style={{ backgroundColor: '#1a1a1a' }}
               >
                 {shareLink && (
                   <div className="space-y-6 px-4 py-6 sm:px-6">
