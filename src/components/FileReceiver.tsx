@@ -39,29 +39,25 @@ const FileReceiver: React.FC<FileReceiverProps> = ({ fileId }) => {
     setError('');
 
     try {
-      const response = await fetch('/api/verify-otp', {
+      const response = await fetch(`/api/files/${fileId}/verify`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ otp }),
+        body: JSON.stringify({ otp, password }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Verification failed');
-      }
-
-      setVerified(true);
-      setFileDetails(data.file);
-      setPasswordRequired(data.passwordRequired);
-
-      if (!data.passwordRequired) {
+        setError(data.message || 'Verification failed');
+      } else {
+        setVerified(true);
+        setFileDetails(data.fileDetails);
         getDownloadUrl();
       }
-    } catch (err) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {
       setIsVerifying(false);
     }
@@ -72,27 +68,22 @@ const FileReceiver: React.FC<FileReceiverProps> = ({ fileId }) => {
     setError('');
 
     try {
-      const response = await fetch('/api/download', {
-        method: 'POST',
+      const response = await fetch(`/api/files/${fileId}/download`, {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ fileId, otp, password }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        if (data.passwordRequired) {
-          setPasswordRequired(true);
-          throw new Error('Password required for this file');
-        }
         throw new Error(data.error || 'Download failed');
       }
 
       setDownloadUrl(data.downloadUrl);
-    } catch (err) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {
       setIsDownloading(false);
     }
