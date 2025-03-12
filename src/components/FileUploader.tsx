@@ -266,7 +266,7 @@ const FileUploader = () => {
         setFiles(prev => 
           prev.map(f => 
             f.id === file.id 
-              ? { ...f, status: 'uploading', progress: 0 } 
+              ? { ...f, status: 'uploading' as const, progress: 0 } 
               : f
           )
         );
@@ -300,7 +300,7 @@ const FileUploader = () => {
         setFiles(prev => 
           prev.map(f => 
             f.id === file.id 
-              ? { ...f, status: 'complete', progress: 100 } 
+              ? { ...f, status: 'complete' as const, progress: 100 } 
               : f
           )
         );
