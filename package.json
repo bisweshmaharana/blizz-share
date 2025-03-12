@@ -6,7 +6,8 @@
     "dev": "next dev -p 3002 -H 0.0.0.0",
     "build": "next build",
     "start": "next start -p $PORT",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npm install --save-dev typescript@5.2.2 @types/react@18.2.24 @types/node@20.8.2 @types/react-dom@18.2.8"
   },
   "dependencies": {
     "@types/file-saver": "^2.0.7",
